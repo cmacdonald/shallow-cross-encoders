@@ -1,13 +1,13 @@
-Code for the ECIR 2024 paper "Shallow Cross-Encoders for Low-Latency Retrieval". 
+# Code for the ECIR 2024 paper "Shallow Cross-Encoders for Low-Latency Retrieval"
 
 ## Credits: 
 [Aleksandr V. Petrov](https://asash.github.io) <BR/>
 [Sean MacAvaney](https://macavaney.us/) <BR/>
 [Craig Macdonald](https://www.dcs.gla.ac.uk/~craigm/)
 
-**If you use this code, please consider citing the paper:**: 
+**If you use this code, please consider citing the paper:** 
 
-```
+```bibtex
 @article{petrov2023shallow,
   title={Shallow Cross-Encoders for Low-Latency Retrieval},
   author={Petrov, Aleksandr and Macdonald, Craig and MacAvaney, Sean},
@@ -24,11 +24,10 @@ You can install the requirements using pip:
 pip3 install -r requirements.txt
 ```
 
-Note that pyterrier also depends on Java installation and requires the `JAVA_HOME` environment variable to point to the Java installation. 
+Note that pyterrier also depends on Java installation and may require the `JAVA_HOME` environment variable to point to the Java installation. 
 
 
 # Preparing data
-Before running the training code, run the 
 Before training shallow cross-encoders, run the `bm25ids2tensor.py` script. The script extracts 1000 candidate documents for each query in the MS-MARCO trainset and pre-tokenizes them. This allows not to spend time on 1st stage retrieval during training. 
 
 
@@ -44,7 +43,7 @@ python3 train_shallow_crossencoder.py
 Some useful parameters:
 | --backbone-model | backbone model; 'prajjwal1/bert-tiny, 'prajjwal1/bert-mini' or 'prajjwal1/bert-small'  |
 |------------------|----------------------------------------------------------------------------------------|
-| -t               | Parameter t for the gBCE loss; we recommend to set it to 0.75                          |
+| -t               | Parameter t for the gBCE loss; we recommend to set it to 0.75. t=0 corressponds to BCE |
 | --negs           | Number of negatives per positive; defaults to 16                                       |
 
 
